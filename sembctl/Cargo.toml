@@ -1,0 +1,6 @@
+[package]
+name = "sembctl"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
