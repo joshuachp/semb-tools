@@ -5,3 +5,13 @@ members = ["sembctl"]
 [workspace.package]
 version = "0.1.0"
 edition = "2024"
+
+[workspace.dependencies]
+clap = "4.6.0"
+clap_complete = "4.6.0"
+color-eyre = "0.6.5"
+dirs = "6.0.0"
+eyre = "0.6.12"
+tracing = "0.1.44"
+tracing-error = "0.2.1"
+tracing-subscriber = "0.3.23"
