@@ -4,10 +4,11 @@ use clap::Parser;
 use tracing_subscriber::layer::SubscriberExt;
 use tracing_subscriber::util::SubscriberInitExt;
 
-mod cli;
-mod completions;
-mod config;
-mod kind;
+pub(crate) mod action;
+pub(crate) mod cli;
+pub(crate) mod config;
+pub(crate) mod tools;
+pub(crate) mod utils;
 
 fn main() -> eyre::Result<()> {
     let cli = cli::Cli::parse();
