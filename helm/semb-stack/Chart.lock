@@ -1,0 +1,15 @@
+dependencies:
+- name: cert-manager
+  repository: https://charts.jetstack.io
+  version: v1.20.2
+- name: haproxy
+  repository: https://haproxytech.github.io/helm-charts
+  version: 1.28.1
+- name: scylla-operator
+  repository: https://scylla-operator-charts.storage.googleapis.com/stable
+  version: v1.20.2
+- name: astarte-operator
+  repository: https://helm.astarte-platform.org
+  version: 26.5.0-alpha.0
+digest: sha256:738347d7ebe963b10dd10c0874f59ad4e95394f827cf952f2ed8910abf7d6ad3
+generated: "2026-04-14T17:39:19.927040241+02:00"
