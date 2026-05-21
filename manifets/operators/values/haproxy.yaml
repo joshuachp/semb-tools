@@ -1,0 +1,9 @@
+controller:
+  service:
+    externalTrafficPolicy: Local
+    type: NodePort
+    nodePorts:
+      http: 32080
+      https: 32443
+    enablePorts:
+      quic: false

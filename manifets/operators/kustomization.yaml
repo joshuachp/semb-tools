@@ -1,0 +1,25 @@
+resources:
+  - namespaces.yaml
+  - certs.yaml
+  - https://github.com/rabbitmq/cluster-operator/releases/latest/download/cluster-operator.yml
+helmCharts:
+  - name: kubernetes-ingress
+    releaseName: haproxy-kubernetes-ingress
+    namespace: haproxy-kubernetes-ingress
+    version: "1.49.0"
+    includeCRDs: true
+    repo: https://haproxytech.github.io/helm-charts
+    valuesFile: values/haproxy.yaml
+  - name: scylla-operator
+    releaseName: scylla-operator
+    version: "1.21.0"
+    includeCRDs: true
+    namespace: scylla-operator
+    repo: https://scylla-operator-charts.storage.googleapis.com/stable
+    valuesFile: values/scylla-operator.yaml
+  - name: astarte-operator
+    releaseName: astarte-operator
+    version: "26.5.1"
+    includeCRDs: true
+    namespace: astarte-operator
+    repo: https://helm.astarte-platform.org

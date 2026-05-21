@@ -1,0 +1,60 @@
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: bootstrap-issuer
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: astarte-ca
+  namespace: astarte
+spec:
+  isCA: true
+  commonName: astarte-ca
+  secretName: ca-secret
+  # duration: 87600h    # 10 years
+  # renewBefore: 720h   # 30 days
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  issuerRef:
+    name: bootstrap-issuer
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: astarte-ca-issuer
+  namespace: astarte
+spec:
+  ca:
+    secretName: ca-secret
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: astarte-cert
+  namespace: astarte
+spec:
+  dnsNames:
+    - api.astarte.localhost
+    - dashboard.astarte.localhost
+    - broker.astarte.localhost
+  secretName: astarte-tls-cert
+  issuerRef:
+    name: astarte-ca-issuer
+    kind: Issuer
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: astarte-tls-cert
+  namespace: astarte
+type: kubernetes.io/tls
+data:
+  tls.crt: ""
+  tls.key: ""

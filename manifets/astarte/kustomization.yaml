@@ -1,0 +1,4 @@
+resources:
+  - rabbitmq-cluster.yaml
+  - scylla-cluster.yaml
+  - astarte-cluster.yaml
